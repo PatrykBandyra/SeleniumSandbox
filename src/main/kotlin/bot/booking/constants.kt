@@ -9,7 +9,7 @@ val CHECK_IN_DATE: LocalDateTime = LocalDateTime.of(2022, 8, 12, 12, 0)
 val CHECK_OUT_DATE: LocalDateTime = LocalDateTime.of(2022, 8, 25, 12, 0)
 const val ADULTS_COUNT: Int = 4
 val STAR_VALUES: Set<StarRating> = hashSetOf(
-    StarRating.UNRATED,
+    StarRating.FOUR,
     StarRating.FIVE
 )
 

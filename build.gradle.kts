@@ -16,6 +16,7 @@ dependencies {
 
     implementation("org.seleniumhq.selenium:selenium-java:4.3.0")
     implementation("io.github.bonigarcia:webdrivermanager:5.2.1")
+    implementation("de.m3y.kformat:kformat:0.9")
 }
 
 tasks.test {

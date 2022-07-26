@@ -13,5 +13,6 @@ fun main() {
         bot.selectAdults()
         bot.clickSearch()
         bot.applyFiltration()
+        bot.reportResults()
     }
 }

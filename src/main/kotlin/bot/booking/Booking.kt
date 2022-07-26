@@ -53,12 +53,14 @@ class Booking(private val teardown: Boolean = false) : AutoCloseable {
 
     fun selectAdults(count: Int = ADULTS_COUNT) {
         driver.findElement(By.id("xp__guests__toggle")).click()
-        val decreaseAdultsNumberButton = driver.findElement(By.cssSelector("button[aria-label=\"Decrease number of Adults\"]"))
+        val decreaseAdultsNumberButton =
+            driver.findElement(By.cssSelector("button[aria-label=\"Decrease number of Adults\"]"))
         val adultsNumberElement = driver.findElement(By.id("group_adults"))
         while (adultsNumberElement.getAttribute("value").toInt() > 1) {
             decreaseAdultsNumberButton.click()
         }
-        val increaseAdultsNumberButton = driver.findElement(By.cssSelector("button[aria-label=\"Increase number of Adults\"]"))
+        val increaseAdultsNumberButton =
+            driver.findElement(By.cssSelector("button[aria-label=\"Increase number of Adults\"]"))
         while (adultsNumberElement.getAttribute("value").toInt() < count) {
             increaseAdultsNumberButton.click()
         }
@@ -71,6 +73,15 @@ class Booking(private val teardown: Boolean = false) : AutoCloseable {
     fun applyFiltration() {
         val filtration = BookingFiltration(driver)
         filtration.applyStarRating()
+        Thread.sleep(3_000)
+        filtration.sortPriceLowestFirst()
+    }
+
+    fun reportResults() {
+        Thread.sleep(3_000)
+        val resultsContainer =
+            driver.findElement(By.cssSelector("#search_results_table > div:nth-child(2) > div > div > div > div.d4924c9e74"))
+        BookingReport(resultsContainer).createReport()
     }
 
     override fun close() {
